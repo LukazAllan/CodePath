@@ -1,5 +1,7 @@
 package br.com.codepath.api.model;
 
+import br.com.codepath.api.model.enums.QuestionType;
+import br.com.codepath.api.model.Lesson;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table (name= "Questions")
+@Table (name= "question")
 @Entity
 @Data
 public class Question {
@@ -16,4 +18,9 @@ public class Question {
     private Long id;
 
     private String body;
+    private QuestionType questionType;
+
+    @ManyToOne
+    @JoinColumn(name = "lessonId")
+    private Lesson lesson;
 }
