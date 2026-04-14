@@ -18,7 +18,7 @@ public class Question {
     private Long id;
 
     private String body;
-    private QuestionType questionType;
+    private QuestionType Type;
 
     @ManyToOne
     @JoinColumn(name = "lessonId")
