@@ -2,7 +2,6 @@ package br.com.codepath.api.controller;
 
 import br.com.codepath.api.model.Question;
 import br.com.codepath.api.service.QuestionService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/questions")
-@AllArgsConstructor
 public class QuestionController {
 
     @Autowired
