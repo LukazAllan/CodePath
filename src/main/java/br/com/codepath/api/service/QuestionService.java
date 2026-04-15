@@ -18,7 +18,8 @@ public class QuestionService {
     @Autowired
     QuestionRepository questionRepository;
 
-    public void createQuest (Question question) {questionRepository.save(question);
+    public void createQuest (Question question) {
+        questionRepository.save(question);
     }
     public List<Question> findAllquest (){
         return questionRepository.findAll();
@@ -26,14 +27,13 @@ public class QuestionService {
     public Optional<Question> findbyIdquest (Long id){
         return questionRepository.findById(id);
     }
-    public void updateQuest(Long id, Question updatedQuestion) {
-        Optional<Question> question = questionRepository.findById(id);
-
-        question.get().setBody(updatedQuestion.getBody());
-        question.get().setType(updatedQuestion.getType());
-        question.get().setLesson(updatedQuestion.getLesson());
-
-        questionRepository.save(updatedQuestion);
+    public void updateQuest(Long id, Question questionEdit) {
+//      Optional<Question> question = questionRepository.findById(id);
+//      question.get().setBody(updatedQuestion.getBody());
+//      question.get().setType(updatedQuestion.getType());
+//      question.get().setLesson(updatedQuestion.getLesson());
+        questionEdit.setId(id);
+        questionRepository.save(questionEdit);
     }
     public void deleteQuest(Long id) {
         questionRepository.deleteById(id);
