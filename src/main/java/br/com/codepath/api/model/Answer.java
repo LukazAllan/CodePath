@@ -14,6 +14,10 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String body;
+    private Long userId;
+    private Long questionId;
+    private Integer selectedOptionId;
+    private String answerText;
+    private Boolean isCorrect;
 
 }
