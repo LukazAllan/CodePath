@@ -14,7 +14,7 @@ public class MatchingPair {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @OneToOne
     @JoinColumn(name= "question_id")
     private Question question;
     private String leftValue;
