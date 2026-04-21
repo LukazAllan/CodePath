@@ -35,4 +35,5 @@ public class LessonController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updtadeLesson(@PathVariable Long id,@RequestBody Lesson lessonEdit){lessonService.updateLesson(id,lessonEdit);}
+
 }
