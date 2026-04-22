@@ -4,17 +4,22 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Collection;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Table(name = "user")
+@Table(name = "usuarios")
 @Entity
 public class User extends UserAbstract {
 
-    public User(Long id, String name, String email, String password) {
-        super(id, name, email, password);
+    @OneToMany(mappedBy = "user")
+    private Collection<LessonProgress> lessonProgress;
+
+    public Collection<LessonProgress> getLessonProgress() {
+        return lessonProgress;
     }
 
-    public User(){
-        super();
+    public void setLessonProgress(Collection<LessonProgress> lessonProgress) {
+        this.lessonProgress = lessonProgress;
     }
 }
