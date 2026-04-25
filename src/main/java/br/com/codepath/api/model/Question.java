@@ -18,6 +18,8 @@ public class Question {
     private Long id;
 
     private String body;
+
+    @Enumerated(EnumType.STRING)
     private QuestionType Type;
 
     @ManyToOne
