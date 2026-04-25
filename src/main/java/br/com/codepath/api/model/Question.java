@@ -18,7 +18,9 @@ public class Question {
     private Long id;
 
     private String body;
-    private QuestionType type;
+
+    @Enumerated(EnumType.STRING)
+    private QuestionType Type;
 
     @ManyToOne
     @JoinColumn(name = "lessonId")
