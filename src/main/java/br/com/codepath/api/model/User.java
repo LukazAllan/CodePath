@@ -12,6 +12,9 @@ import java.util.Collection;
 @Entity
 public class User extends UserAbstract {
 
+    private int xp;
+    private int hearts;
+
     @OneToMany(mappedBy = "user")
     private Collection<LessonProgress> lessonProgress;
 
