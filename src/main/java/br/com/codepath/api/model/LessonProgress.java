@@ -1,5 +1,6 @@
 package br.com.codepath.api.model;
 
+import br.com.codepath.api.model.enums.LessonProgressStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,19 +12,23 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "lessonProgress")
+@Table(name = "lesson_progress")
 public class LessonProgress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToOne
-    @JoinColumn(name = "lessonId")
+    @JoinColumn(name = "lesson_id")
     private Lesson lesson;
+
+    @Enumerated(EnumType.STRING)
+    private LessonProgressStatus status;
+
     private Boolean completed;
     private LocalDateTime completedAt;
 }
