@@ -16,8 +16,14 @@ public class LessonProgress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
-    private Long lessonId;
+
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
+
+    @OneToOne
+    @JoinColumn(name = "lessonId")
+    private Lesson lesson;
     private Boolean completed;
     private LocalDateTime completedAt;
 }
