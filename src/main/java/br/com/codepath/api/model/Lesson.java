@@ -20,7 +20,7 @@ public class Lesson {
 
     @ManyToOne
     @JoinColumn(name = "section_id")
-    private section section;
+    private Section section;
 
     private int order;
     private Boolean active;
