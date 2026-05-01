@@ -19,8 +19,9 @@ public class Lesson {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "courseId")
-    private Course course;
+    @JoinColumn(name = "section_id")
+    private section section;
 
+    private int order;
     private Boolean active;
 }
