@@ -1,5 +1,6 @@
 package br.com.codepath.api.model;
 
+import br.com.codepath.api.model.enums.LessonProgressStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "lessonProgress")
+@Table(name = "lesson_progress")
 public class LessonProgress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
