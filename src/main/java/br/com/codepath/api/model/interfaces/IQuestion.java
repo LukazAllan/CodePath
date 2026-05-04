@@ -1,10 +1,13 @@
 package br.com.codepath.api.model.interfaces;
 
+import br.com.codepath.api.model.Answer;
+import br.com.codepath.api.model.Question;
+
 import java.util.Map;
 
 public interface IQuestion {
 
-    public Map<String, String> getQuestion();
+    Map<String, String> getQuestion(Question question);
 
-    public Boolean verifyQuestion();
+    Boolean verifyQuestion(Question question, Answer answer);
 }
