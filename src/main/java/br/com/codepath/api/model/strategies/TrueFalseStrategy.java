@@ -1,7 +1,6 @@
 package br.com.codepath.api.model.strategies;
 
 import br.com.codepath.api.model.Answer;
-import br.com.codepath.api.model.Question;
 import br.com.codepath.api.model.TrueFalse;
 import br.com.codepath.api.model.enums.QuestionType;
 import br.com.codepath.api.model.interfaces.IQuestion;
@@ -22,10 +21,10 @@ public class TrueFalseStrategy implements IQuestion {
                 .orElseThrow(() -> new RuntimeException("Sem TrueFalse"));
 
         return Map.of(
-                "question", tf.getQuestion.getBody(),
+                "question", tf.getQuestion().getBody(),
                 "type", QuestionType.TRUE_FALSE.name(),
-                "option1", tf.getTrueValue(),
-                "option2", tf.getFalseValue()
+                "option1", tf.getTrueAnswer(),
+                "option2", tf.getFalseAnswer()
         );
     }
 
@@ -36,10 +35,10 @@ public class TrueFalseStrategy implements IQuestion {
                 .orElseThrow(() -> new RuntimeException("Sem TrueFalse"));
 
         // segurança básica (evita NullPointerException)
-        if (tf.getValue == 0) {
-            return answer.getBody().equalsIgnoreCase(tf.getFalseValue());
+        if (tf.getValue() == 0) {
+            return answer.getBody().equalsIgnoreCase(tf.getFalseAnswer());
         } else {
-            return answer.getBody().equalsIgnoreCase(tf.getTrueValue());
+            return answer.getBody().equalsIgnoreCase(tf.getTrueAnswer());
         }
     }
 }
