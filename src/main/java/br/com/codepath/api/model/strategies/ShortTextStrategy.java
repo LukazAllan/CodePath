@@ -19,17 +19,22 @@ public class ShortTextStrategy implements IQuestion {
     @Override
     public Map<String, String> getQuestion(Long id) {
 
-        Optional<ShortAnswer> sa = shortAnswerRepository.findById(id);
+        ShortAnswer sa = shortAnswerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Sem ShortAnswer"));
 
         return Map.of(
-                "question", shortAnswerRepository.findById(id),
+                "question", sa.getQuestion().getBody(),
                 "type", QuestionType.SHORT_TEXT.name(),
-                "answer", Answer.
+                "answer", sa.getText()
         );
     }
 
     @Override
-    public Boolean verifyQuestion(Question question, Answer answer) {
-        return null;
+    public Boolean verifyQuestion(Long id, Answer answer) {
+
+        ShortAnswer sa = shortAnswerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Sem ShortAnswer"));
+
+        return answer.getBody().equalsIgnoreCase(sa.getText());
     }
 }

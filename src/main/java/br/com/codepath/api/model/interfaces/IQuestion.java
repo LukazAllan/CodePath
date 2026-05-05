@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface IQuestion {
 
-    Map<String, String> getQuestion(Question question);
+    Map<String, String> getQuestion(Long id);
 
-    Boolean verifyQuestion(Question question, Answer answer);
+    Boolean verifyQuestion(Long id, Answer answer);
 }
