@@ -1,11 +1,15 @@
 package br.com.codepath.api.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Table(name = "usuarios")
@@ -17,12 +21,4 @@ public class User extends UserAbstract {
 
     @OneToMany(mappedBy = "user")
     private Collection<LessonProgress> lessonProgress;
-
-    public Collection<LessonProgress> getLessonProgress() {
-        return lessonProgress;
-    }
-
-    public void setLessonProgress(Collection<LessonProgress> lessonProgress) {
-        this.lessonProgress = lessonProgress;
-    }
 }
