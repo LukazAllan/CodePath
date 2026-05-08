@@ -15,7 +15,7 @@ public class TrueFalseStrategy implements IQuestion {
     TrueFalseRepository trueFalseRepository;
 
     @Override
-    public Map<String, String> getQuestion(Long id) {
+    public Map<String, String> getQuestionById(Long id) {
 
         TrueFalse tf = trueFalseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sem TrueFalse"));
@@ -29,7 +29,7 @@ public class TrueFalseStrategy implements IQuestion {
     }
 
     @Override
-    public Boolean verifyQuestion(Long id, Answer answer) {
+    public Boolean verifyQuestionById(Long id, Answer answer) {
 
         TrueFalse tf = trueFalseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sem TrueFalse"));

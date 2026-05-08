@@ -31,4 +31,8 @@ public class Answer {
 
     private String body;
 
+    private String leftValue;
+
+    private String rightValue;
+
 }
