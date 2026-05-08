@@ -17,7 +17,7 @@ public class ShortTextStrategy implements IQuestion {
     ShortAnswerRepository shortAnswerRepository;
 
     @Override
-    public Map<String, String> getQuestion(Long id) {
+    public Map<String, String> getQuestionById(Long id) {
 
         ShortAnswer sa = shortAnswerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sem ShortAnswer"));
@@ -30,7 +30,7 @@ public class ShortTextStrategy implements IQuestion {
     }
 
     @Override
-    public Boolean verifyQuestion(Long id, Answer answer) {
+    public Boolean verifyQuestionById(Long id, Answer answer) {
 
         ShortAnswer sa = shortAnswerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sem ShortAnswer"));
