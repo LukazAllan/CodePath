@@ -16,21 +16,14 @@ public class SuggestionService {
     public void createSuggestion(Suggestion suggestion) {
         suggestionRepository.save(suggestion);
     }
-
-    public List<Suggestion> ListAllSuggestions() {
+    public List<Suggestion> listAllSuggestions() {
         return suggestionRepository.findAll();
     }
-
     public Optional<Suggestion> findByIdSuggestion(Long id) {
         return suggestionRepository.findById(id);
     }
-
     public void deleteSuggestionById(Long id) {
         suggestionRepository.deleteById(id);
     }
-
-    public void UpdateSuggestion(Long id, Suggestion suggestionEdit) {
-        suggestionEdit.setId(id);
-        suggestionRepository.save(suggestionEdit);
-    }
+    public void UpdateSuggestion(Long id, Suggestion suggestionEdit) {suggestionEdit.setId(id);suggestionRepository.save(suggestionEdit);}
 }
