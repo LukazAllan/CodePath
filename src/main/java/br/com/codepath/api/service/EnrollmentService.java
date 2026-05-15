@@ -17,20 +17,24 @@ public class EnrollmentService {
     @Autowired
     EnrollmentRepository enrollmentRepository;
 
-    public void createEnrollment (Enrollment enrollment){
+    public void create(Enrollment enrollment){
         enrollmentRepository.save(enrollment);
     }
-    public List<Enrollment> listAllenrollment(){
+
+    public List<Enrollment> listAll(){
         return enrollmentRepository.findAll();
     }
-    public Optional<Enrollment> listByidEnrollment(Long id){
+
+    public Optional<Enrollment> listById(Long id){
         return enrollmentRepository.findById(id);
     }
-    public void updateEnrollment (Long id,Enrollment enrollmentedit){
+
+    public void updateById(Long id, Enrollment enrollmentedit){
         enrollmentedit.setId(id);
         enrollmentRepository.save(enrollmentedit);
     }
-    public void deleteEnrollment (Long id) {
+
+    public void delete(Long id) {
         enrollmentRepository.deleteById(id);
     }
 }

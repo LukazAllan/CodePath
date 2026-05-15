@@ -1,23 +1,10 @@
 package br.com.codepath.api.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Embeddable;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "matchingpair")
-@Data
+@Embeddable
 public class MatchingPair {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @OneToOne
-    @JoinColumn(name= "question_id")
-    private Question question;
-    private String leftValue;
-    private String rightValue;
-    private Boolean isCorrect;
+    private String left;
+    private String right;
 }
+
