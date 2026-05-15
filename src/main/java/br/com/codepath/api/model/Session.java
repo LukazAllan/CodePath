@@ -23,7 +23,7 @@ public class Session {
     private User user;
 
     @Column(nullable = false, unique = true)
-    private String hash;
+    private String token;
 
     @Column(name = "last_activity", nullable = false)
     private LocalDateTime lastActivity;

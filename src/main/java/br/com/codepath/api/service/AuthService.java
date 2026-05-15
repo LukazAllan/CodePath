@@ -1,18 +1,18 @@
 package br.com.codepath.api.service;
 
 import br.com.codepath.api.dto.request.NewUserRequestDTO;
+import br.com.codepath.api.dto.response.MeResponseDTO;
+import br.com.codepath.api.dto.response.TokenResponseDTO;
 import br.com.codepath.api.model.Session;
 import br.com.codepath.api.model.User;
 import br.com.codepath.api.repository.SessionRepository;
 import br.com.codepath.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -39,28 +39,28 @@ public class AuthService {
         userService.createUser(newUser);
     }
 
-    public String login(String email, String password) {
+    public TokenResponseDTO login(String email, String password) {
 
         User user = userRepository
                 .findByEmailAndPassword(email, password)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        String hash = UUID.randomUUID().toString();
+        String token = UUID.randomUUID().toString();
 
         Session session = new Session();
         session.setUser(user);
-        session.setHash(hash);
+        session.setToken(token);
         session.setLastActivity(LocalDateTime.now());
 
         sessionRepository.save(session);
 
-        return hash;
+        return new TokenResponseDTO(token);
     }
 
-    public User validateSession(String hash) {
+    public User validateSession(String token) {
 
         Session session = sessionRepository
-                .findByHash(hash)
+                .findByToken(token)
                 .orElseThrow(() -> new RuntimeException("Sessão inválida"));
 
         if (session.getLastActivity()
@@ -77,12 +77,18 @@ public class AuthService {
         return session.getUser();
     }
 
-    public String me(String hash){
+    public MeResponseDTO me(String token){
         Session mySession = sessionRepository
-                .findByHash(hash)
+                .findByToken(token)
                 .orElseThrow(() -> new RuntimeException("Sessão não encontrada"));
         mySession.setLastActivity(LocalDateTime.now());
+        MeResponseDTO me = new MeResponseDTO(
+                mySession.getUser().getName(),
+                mySession.getUser().getEmail(),
+                mySession.getToken(),
+                mySession.getLastActivity()
+        );
         sessionRepository.save(mySession);
-        return mySession.getUser().getName();
+        return me;
     }
 }

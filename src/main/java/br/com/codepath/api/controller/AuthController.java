@@ -1,11 +1,13 @@
 package br.com.codepath.api.controller;
 
+import br.com.codepath.api.dto.request.LoginRequestDTO;
 import br.com.codepath.api.dto.request.NewUserRequestDTO;
-import br.com.codepath.api.model.User;
+import br.com.codepath.api.dto.request.TokenRequestDTO;
+import br.com.codepath.api.dto.response.MeResponseDTO;
+import br.com.codepath.api.dto.response.TokenResponseDTO;
 import br.com.codepath.api.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -32,24 +33,18 @@ public class AuthController {
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
-
-        String token = authService.login(
-                body.get("email"),
-                body.get("password")
+    public TokenResponseDTO login(@RequestBody LoginRequestDTO request) {
+        return authService.login(
+                request.getEmail(),
+                request.getPassword()
         );
-
-        return ResponseEntity.ok(Map.of("token", token));
     }
 
     @PostMapping("/me")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> me(@RequestBody Map<String, String> body){
-
-        String hash = authService.me(
-                body.get("hash")
+    public MeResponseDTO me(@RequestBody TokenRequestDTO request) {
+        return authService.me(
+                request.getToken()
         );
-
-        return ResponseEntity.ok(Map.of("hash", hash));
     }
 }
