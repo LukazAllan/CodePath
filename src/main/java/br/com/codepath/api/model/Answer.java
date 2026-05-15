@@ -25,9 +25,9 @@ public class Answer {
     @JoinColumn(name = "questionId")
     private Question question;
 
-    @ManyToOne
-    @JoinColumn(name = "selectedOptionId")
-    private Option option;
+    //@ManyToOne
+    //@JoinColumn(name = "selectedOptionId")
+    //private Option option;
 
     private String body;
 

@@ -10,11 +10,18 @@ import java.util.Collection;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Table(name = "usuarios")
 @Entity
-public class User extends UserAbstract {
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+    private String password;
 
     private int xp;
     private int hearts;
