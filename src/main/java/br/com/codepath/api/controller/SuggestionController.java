@@ -23,15 +23,11 @@ public class SuggestionController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Suggestion> ListAllSuggestions() {
-        return suggestionService.ListAllSuggestions();
-    }
+    public List<Suggestion> ListAllSuggestions() {return suggestionService.listAllSuggestions();}
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Suggestion> findByIdSuggestion(@PathVariable Long id) {
-        return suggestionService.findByIdSuggestion(id);
-    }
+    public Optional<Suggestion> findByIdSuggestion(@PathVariable Long id) {return suggestionService.findByIdSuggestion(id);}
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -41,7 +37,5 @@ public class SuggestionController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateSuggestion(@PathVariable Long id, @RequestBody Suggestion suggestionEdit) {
-        suggestionService.UpdateSuggestion(id, suggestionEdit);
-    }
+    public void updateSuggestion(@PathVariable Long id, @RequestBody Suggestion suggestionEdit) {suggestionService.UpdateSuggestion(id, suggestionEdit);}
 }
