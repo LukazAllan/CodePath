@@ -1,0 +1,46 @@
+@baseUrl =  http://localhost:8080
+@token = 98d44069-db31-41bc-ad67-b5bd52039550
+@other_token = 58095b72-bfde-4d02-b1ab-f8e25b0cccdd
+@course = /Courses
+
+### Criar novo user
+POST {{baseUrl}}/auth/signup
+content-type: application/json
+
+{
+    "name": "sample",
+    "email": "sample@example.com",
+    "password": "password123"
+}
+
+
+### Criar token com login
+POST {{baseUrl}}/auth/login
+content-type: application/json
+
+{
+    "email": "sample@example.com",
+    "password": "password123"
+}
+
+### Whois pelo token
+POST {{baseUrl}}/auth/me
+content-type: application/json
+
+{
+    "token": "{{token}}"
+}
+
+### Criando Cursos
+POST {{baseUrl}}{{course}}
+Content-Type: application/json
+
+{
+    "nome": "Java & SpringBoot"
+}
+
+### Listando Cursos
+GET {{baseUrl}}{{course}}
+Content-Type: application/json
+
+###
