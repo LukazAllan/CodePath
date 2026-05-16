@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/enrollment")
+@RequestMapping("/enrollments")
 public class EnrollmentController {
     @Autowired
     EnrollmentService enrollmentService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void createEnrollment (Enrollment enrollment){
-        enrollmentService.createEnrollment(enrollment);
+    public void create(Enrollment enrollment){
+        enrollmentService.create(enrollment);
     }
 
 }
