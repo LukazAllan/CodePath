@@ -3,10 +3,12 @@ package br.com.codepath.api.service;
 import br.com.codepath.api.model.LessonProgress;
 import br.com.codepath.api.repository.LessonProgressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class LessonProgressService {
 
     @Autowired
