@@ -18,19 +18,19 @@ public class LessonService {
     @Autowired
     LessonRepository lessonRepository;
 
-    public void createLesson(Lesson lesson){
+    public void create(Lesson lesson){
         lessonRepository.save(lesson);
     }
-    public List<Lesson> listAlllesson(){
+    public List<Lesson> listAll(){
         return lessonRepository.findAll();
     }
-    public Optional<Lesson> listByidLesson(Long id){
+    public Optional<Lesson> listById(Long id){
         return lessonRepository.findById(id);
     }
-    public void deleteLesson(Long id){
+    public void deleteById(Long id){
         lessonRepository.deleteById(id);
     }
-    public void updateLesson(Long id, Lesson lessonEdit){
+    public void updateById(Long id, Lesson lessonEdit){
         lessonEdit.setId(id);
         lessonRepository.save(lessonEdit);
     }

@@ -17,21 +17,21 @@ public class AnswerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createAnswer(@RequestBody Answer answer) {answerService.createAnswer(answer);}
+    public void create(@RequestBody Answer answer) {answerService.create(answer);}
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Answer> listAllAnswers() {return answerService.listAllAnswers();}
+    public List<Answer> listAll() {return answerService.listAll();}
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Answer> listAnswerById(@PathVariable Long id) {return answerService.listByIdAnswer(id);}
+    public Optional<Answer> listById(@PathVariable Long id) {return answerService.listById(id);}
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAnswerById(@PathVariable Long id) {answerService.deleteAnswer(id);}
+    public void deleteById(@PathVariable Long id) {answerService.deleteById(id);}
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateAnswerById(@PathVariable Long id, @RequestBody Answer answerEdit) {answerService.updateAnswer(id, answerEdit);}
+    public void updateById(@PathVariable Long id, @RequestBody Answer answerEdit) {answerService.updateById(id, answerEdit);}
 }

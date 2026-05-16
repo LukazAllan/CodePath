@@ -11,7 +11,7 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "usuarios")
+@Table(name = "users")
 @Entity
 public class User {
 
