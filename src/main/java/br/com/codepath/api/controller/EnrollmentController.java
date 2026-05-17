@@ -4,10 +4,10 @@ import br.com.codepath.api.model.Enrollment;
 import br.com.codepath.api.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/enrollments")
@@ -21,4 +21,27 @@ public class EnrollmentController {
         enrollmentService.create(enrollment);
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Enrollment> listAll(){
+        return enrollmentService.listAll();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Optional<Enrollment> listById(@PathVariable Long id){
+        return enrollmentService.listById(id);
+    }
+
+    @PostMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateById(@PathVariable Long id, @RequestBody Enrollment enrollment){
+        enrollmentService.updateById(id, enrollment);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable Long id) {
+        enrollmentService.deleteById(id);
+    }
 }
