@@ -13,17 +13,17 @@ public class SuggestionService {
     @Autowired
     SuggestionRepository suggestionRepository;
 
-    public void createSuggestion(Suggestion suggestion) {
+    public void create(Suggestion suggestion) {
         suggestionRepository.save(suggestion);
     }
-    public List<Suggestion> listAllSuggestions() {
+    public List<Suggestion> listAll() {
         return suggestionRepository.findAll();
     }
-    public Optional<Suggestion> findByIdSuggestion(Long id) {
+    public Optional<Suggestion> listById(Long id) {
         return suggestionRepository.findById(id);
     }
-    public void deleteSuggestionById(Long id) {
+    public void deleteById(Long id) {
         suggestionRepository.deleteById(id);
     }
-    public void UpdateSuggestion(Long id, Suggestion suggestionEdit) {suggestionEdit.setId(id);suggestionRepository.save(suggestionEdit);}
+    public void updateById(Long id, Suggestion suggestionEdit) {suggestionEdit.setId(id);suggestionRepository.save(suggestionEdit);}
 }

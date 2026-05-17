@@ -18,21 +18,21 @@ public class LessonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createLesson(@RequestBody Lesson lesson){lessonService.createLesson(lesson);}
+    public void create(@RequestBody Lesson lesson){lessonService.create(lesson);}
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Lesson> listAllLesson(){return lessonService.listAlllesson();}
+    public List<Lesson> listAll(){return lessonService.listAll();}
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Lesson> listByIdLesson(@PathVariable Long id){return lessonService.listByidLesson(id);}
+    public Optional<Lesson> listById(@PathVariable Long id){return lessonService.listById(id);}
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteLesson(@PathVariable Long id){lessonService.deleteLesson(id);}
+    public void delete(@PathVariable Long id){lessonService.deleteById(id);}
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updtadeLesson(@PathVariable Long id, @RequestBody Lesson lessonedit){lessonService.updateLesson(id,lessonedit);}
+    public void update(@PathVariable Long id, @RequestBody Lesson lessonedit){lessonService.updateById(id,lessonedit);}
 }

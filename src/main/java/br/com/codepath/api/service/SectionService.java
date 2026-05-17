@@ -22,10 +22,10 @@ public class SectionService {
     public Optional<Section> listById(Long id){
         return sectionRepository.findById(id);
     }
-    public void delete(Long id){
+    public void deleteById(Long id){
         sectionRepository.deleteById(id);
     }
-    public void update(Long id, Section lessonEdit){
+    public void updateById(Long id, Section lessonEdit){
         lessonEdit.setId(id);
         sectionRepository.save(lessonEdit);
     }

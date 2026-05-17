@@ -36,12 +36,12 @@ public class SectionController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(Long id){
-        sectionService.delete(id);
+        sectionService.deleteById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void update(Long id, Section sectionEdit){
-        sectionService.update(id, sectionEdit);
+        sectionService.updateById(id, sectionEdit);
     }
 }

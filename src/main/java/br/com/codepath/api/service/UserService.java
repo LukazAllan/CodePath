@@ -14,11 +14,11 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public void createUser(User user) {
+    public void create(User user) {
         userRepository.save(user);
     }
-    public List<User> listAllUser(){return userRepository.findAll();}
-    public Optional<User> listByIdUser(Long id){return userRepository.findById(id);}
-    public void deleteUserById(Long id){userRepository.deleteById(id);}
-    public void updateUser(Long id,User userEdit){userEdit.setId(id); userRepository.save(userEdit);}
+    public List<User> listAll(){return userRepository.findAll();}
+    public Optional<User> listById(Long id){return userRepository.findById(id);}
+    public void deleteById(Long id){userRepository.deleteById(id);}
+    public void updateById(Long id,User userEdit){userEdit.setId(id); userRepository.save(userEdit);}
 }

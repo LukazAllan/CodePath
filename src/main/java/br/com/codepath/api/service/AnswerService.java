@@ -14,23 +14,23 @@ public class AnswerService {
     @Autowired
     AnswerRepository answerRepository;
 
-    public void createAnswer(Answer answer) {
+    public void create(Answer answer) {
         answerRepository.save(answer);
     }
 
-    public List<Answer> listAllAnswers() {
+    public List<Answer> listAll() {
         return answerRepository.findAll();
     }
 
-    public Optional<Answer> listByIdAnswer(Long id) {
+    public Optional<Answer> listById(Long id) {
         return answerRepository.findById(id);
     }
 
-    public void deleteAnswer(Long id) {
+    public void deleteById(Long id) {
         answerRepository.deleteById(id);
     }
 
-    public void updateAnswer(Long id, Answer answerEdit) {
+    public void updateById(Long id, Answer answerEdit) {
         answerEdit.setId(id);
         answerRepository.save(answerEdit);
     }

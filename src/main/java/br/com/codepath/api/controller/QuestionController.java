@@ -17,31 +17,31 @@ public class QuestionController {
     QuestionService service;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createquest(@RequestBody Question question){
-        service.createQuest(question);
+    public void create(@RequestBody Question question){
+        service.create(question);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Question> findAllquest() {
-        return service.findAllquest();
+    public List<Question> listAll() {
+        return service.listAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<Question> findById(@PathVariable Long id) {
-        return service.findbyIdquest(id);
+        return service.listById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updatequest(@PathVariable Long id, @RequestBody Question updatedQuestion) {
-        service.updateQuest(id, updatedQuestion);
+    public void update(@PathVariable Long id, @RequestBody Question updatedQuestion) {
+        service.updateById(id, updatedQuestion);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletequest(@PathVariable Long id) {
-        service.deleteQuest(id);
+    public void delete(@PathVariable Long id) {
+        service.deleteById(id);
     }
 }

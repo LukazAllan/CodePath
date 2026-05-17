@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Courses")
+@RequestMapping("/courses")
 public class CourseController {
 
     @Autowired
@@ -18,21 +18,21 @@ public class CourseController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCourse (@RequestBody Course course) {service.createCourse(course);}
+    public void create(@RequestBody Course course) {service.create(course);}
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Course> listAllcourse(){return service.listAllcourse();}
+    public List<Course> listAll(){return service.listAll();}
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Course> listByidCourse(@PathVariable Long id){return service.listByidCourse(id);}
+    public Optional<Course> listById(@PathVariable Long id){return service.listById(id);}
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCourse(@PathVariable Long id,@RequestBody Course courseEdit){service.updateCourse(id,courseEdit);}
+    public void update(@PathVariable Long id,@RequestBody Course courseEdit){service.updateById(id,courseEdit);}
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCourse(@PathVariable Long id){service.deleteCourse(id);}
+    public void delete(@PathVariable Long id){service.deleteById(id);}
 }

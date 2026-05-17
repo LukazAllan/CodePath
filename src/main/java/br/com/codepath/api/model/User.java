@@ -1,9 +1,9 @@
 package br.com.codepath.api.model;
 
+import br.com.codepath.api.model.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
@@ -11,7 +11,7 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "usuarios")
+@Table(name = "users")
 @Entity
 public class User {
 
@@ -25,6 +25,9 @@ public class User {
 
     private int xp;
     private int hearts;
+
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role;
 
     @OneToMany(mappedBy = "user")
     private Collection<LessonProgress> lessonProgress;

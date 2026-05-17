@@ -17,25 +17,25 @@ public class SuggestionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createSuggestion(@RequestBody Suggestion suggestion) {
-         suggestionService.createSuggestion(suggestion);
+    public void create(@RequestBody Suggestion suggestion) {
+         suggestionService.create(suggestion);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Suggestion> ListAllSuggestions() {return suggestionService.listAllSuggestions();}
+    public List<Suggestion> ListAll() {return suggestionService.listAll();}
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Suggestion> findByIdSuggestion(@PathVariable Long id) {return suggestionService.findByIdSuggestion(id);}
+    public Optional<Suggestion> listById(@PathVariable Long id) {return suggestionService.listById(id);}
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteSuggestion(@PathVariable Long id) {
-        suggestionService.deleteSuggestionById(id);
+    public void deleteById(@PathVariable Long id) {
+        suggestionService.deleteById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateSuggestion(@PathVariable Long id, @RequestBody Suggestion suggestionEdit) {suggestionService.UpdateSuggestion(id, suggestionEdit);}
+    public void updateById(@PathVariable Long id, @RequestBody Suggestion suggestionEdit) {suggestionService.updateById(id, suggestionEdit);}
 }

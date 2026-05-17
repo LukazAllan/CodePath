@@ -18,20 +18,20 @@ public class CourseService {
     @Autowired
     CourseRepository courseRepository;
 
-    public void createCourse (Course course){
+    public void create(Course course){
         courseRepository.save(course);
     }
-    public List<Course> listAllcourse (){
+    public List<Course> listAll(){
         return courseRepository.findAll();
     }
-    public Optional<Course> listByidCourse(Long id){
+    public Optional<Course> listById(Long id){
         return courseRepository.findById(id);
     }
-    public void updateCourse (Long id, Course courseEdit){
+    public void updateById(Long id, Course courseEdit){
         courseEdit.setId(id);
         courseRepository.save(courseEdit);
     }
-    public void deleteCourse (Long id){
+    public void deleteById(Long id){
         courseRepository.deleteById(id);
     }
 }
