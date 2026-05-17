@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,8 +25,5 @@ public class Streak {
     @ColumnDefault("0")
     private Integer days;
 
-
-    private Date lastDay = new Date();
-
-
+    private LocalDate lastDay = LocalDate.now();
 }

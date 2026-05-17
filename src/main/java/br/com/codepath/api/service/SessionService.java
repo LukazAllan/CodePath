@@ -30,12 +30,14 @@ public class SessionService {
         thisSession.setLastActivity(
                 thisSession.getLastActivity().minusDays(1)
         );
+        sessionRepository.save(thisSession);
     }
 
     public void refreshById(Long id){
         Session thisSession = sessionRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         thisSession.setLastActivity(LocalDateTime.now());
+        sessionRepository.save(thisSession);
     }
 
     public void deleteById(Long id){
