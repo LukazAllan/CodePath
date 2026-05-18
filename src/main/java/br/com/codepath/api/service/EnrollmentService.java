@@ -34,7 +34,7 @@ public class EnrollmentService {
         enrollmentRepository.save(enrollmentedit);
     }
 
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         enrollmentRepository.deleteById(id);
     }
 }
