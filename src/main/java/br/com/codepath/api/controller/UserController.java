@@ -19,23 +19,23 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody User user){
-        userService.createUser(user);
+    public void create(@RequestBody User user){
+        userService.create(user);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<User> findAllUser(){return userService.listAllUser();}
+    public List<User> findAll(){return userService.listAll();}
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<User> findUserById(@PathVariable Long id){return userService.listByIdUser(id);}
+    public Optional<User> findUserById(@PathVariable Long id){return userService.listById(id);}
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUserById(@PathVariable Long id){userService.deleteUserById(id);}
+    public void deleteUserById(@PathVariable Long id){userService.deleteById(id);}
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateUser(@PathVariable Long id, @RequestBody User userEdit){userService.updateUser(id,userEdit);}
+    public void updateUser(@PathVariable Long id, @RequestBody User userEdit){userService.updateById(id,userEdit);}
 }
