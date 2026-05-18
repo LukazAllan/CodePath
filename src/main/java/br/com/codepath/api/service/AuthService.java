@@ -36,7 +36,7 @@ public class AuthService {
         newUser.setPassword(user.getPassword());
         newUser.setXp(0);
         newUser.setHearts(10);
-        userService.createUser(newUser);
+        userService.create(newUser);
     }
 
     public TokenResponseDTO login(String email, String password) {
