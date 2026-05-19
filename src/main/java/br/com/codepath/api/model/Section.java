@@ -24,6 +24,6 @@ public class Section {
     private String title;
     private String subtitle;
     private String color;
-    private char icon;
-    private int ordem;
+    private Character icon;
+    private Integer ordem;
 }

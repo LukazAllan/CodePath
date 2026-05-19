@@ -4,7 +4,7 @@
 ### =========================================================
 @baseUrl = http://localhost:8080
 @contentType = application/json
-@token = 98d44069-db31-41bc-ad67-b5bd52039550
+@token = 6e46cc2c-0e38-4cd4-a1eb-94fad9363301
 @id = 1
 ### =========================================================
 ### ENDPOINTS
@@ -65,12 +65,12 @@ POST {{baseUrl}}{{user}}
 Content-Type: {{contentType}}
 
 {
-  "name": "Maria",
-  "email": "maria@codepath.com",
+  "name": "Felipe",
+  "email": "felipe@codepath.com",
   "password": "123456",
   "xp": 0,
   "hearts": 5,
-  "role": "USER"
+  "role": "ADMIN"
 }
 
 ###
@@ -81,12 +81,12 @@ GET {{baseUrl}}{{user}}
 ###
 
 ### Find User By Id
-GET {{baseUrl}}{{user}}{{id}}
+GET {{baseUrl}}{{user}}/{{id}}
 
 ###
 
 ### Update User
-PUT {{baseUrl}}{{user}}{{id}}
+PUT {{baseUrl}}{{user}}/{{id}}
 Content-Type: {{contentType}}
 
 {
@@ -101,7 +101,7 @@ Content-Type: {{contentType}}
 ###
 
 ### Delete User
-DELETE {{baseUrl}}{{user}}{{id}}
+DELETE {{baseUrl}}{{user}}/{{id}}
 
 ############################################################
 # COURSES
@@ -121,14 +121,14 @@ Content-Type: {{contentType}}
 GET {{baseUrl}}{{course}}
 
 ###
-
+{{lesson}}
 ### Find Course By Id
-GET {{baseUrl}}{{course}}{{id}}
+GET {{baseUrl}}{{course}}/{{id}}
 
 ###
 
 ### Update Course
-PUT {{baseUrl}}{{course}}{{id}}
+PUT {{baseUrl}}{{course}}/{{id}}
 Content-Type: {{contentType}}
 
 {
@@ -138,7 +138,7 @@ Content-Type: {{contentType}}
 ###
 
 ### Delete Course
-DELETE {{baseUrl}}{{course}}{{id}}
+DELETE {{baseUrl}}{{course}}/{{id}}
 
 ############################################################
 # SECTIONS
@@ -167,29 +167,29 @@ GET {{baseUrl}}{{section}}
 ###
 
 ### Find Section By Id
-GET {{baseUrl}}{{section}}{{id}}
+GET {{baseUrl}}{{section}}/{{id}}
 
 ###
 
 ### Update Section
-PUT {{baseUrl}}{{section}}{{id}}
+PUT {{baseUrl}}{{section}}/{{id}}
 Content-Type: {{contentType}}
 
 {
   "course": {
     "id": 1
   },
-  "title": "Fundamentos Atualizado",
-  "subtitle": "Nova descrição",
+  "title": "Fundamentos",
+  "subtitle": "Introdução ao TypeScript",
   "color": "#00AA88",
-  "icon": "🟢",
+  "icon": "I",
   "ordem": 1
 }
 
 ###
 
 ### Delete Section
-DELETE {{baseUrl}}{{section}}{{id}}
+DELETE {{baseUrl}}{{section}}/{{id}}
 
 ############################################################
 # LESSONS
@@ -217,12 +217,12 @@ GET {{baseUrl}}{{lesson}}
 ###
 
 ### Find Lesson By Id
-GET {{baseUrl}}{{lesson}}{{id}}
+GET {{baseUrl}}{{lesson}}/{{id}}
 
 ###
 
 ### Update Lesson
-PUT {{baseUrl}}{{lesson}}{{id}}
+PUT {{baseUrl}}{{lesson}}/{{id}}
 Content-Type: {{contentType}}
 
 {
@@ -231,14 +231,14 @@ Content-Type: {{contentType}}
   "section": {
     "id": 1
   },
-  "ordem": 2,
+  "ordem": 1,
   "active": true
 }
 
 ###
 
 ### Delete Lesson
-DELETE {{baseUrl}}{{lesson}}{{id}}
+DELETE {{baseUrl}}{{lesson}}/{{id}}
 
 ############################################################
 # QUESTIONS
@@ -341,12 +341,12 @@ GET {{baseUrl}}{{question}}
 ###
 
 ### Find Question By Id
-GET {{baseUrl}}{{question}}{{id}}
+GET {{baseUrl}}{{question}}/{{id}}
 
 ###
 
 ### Update Question
-PUT {{baseUrl}}{{question}}{{id}}
+PUT {{baseUrl}}{{question}}/{{id}}
 Content-Type: {{contentType}}
 
 {
@@ -369,7 +369,7 @@ Content-Type: {{contentType}}
 ###
 
 ### Delete Question
-DELETE {{baseUrl}}{{question}}{{id}}
+DELETE {{baseUrl}}{{question}}/{{id}}
 
 ############################################################
 # ANSWERS
@@ -399,12 +399,12 @@ GET {{baseUrl}}{{answer}}
 ###
 
 ### Find Answer By Id
-GET {{baseUrl}}{{answer}}{{id}}
+GET {{baseUrl}}{{answer}}/{{id}}
 
 ###
 
 ### Update Answer
-PUT {{baseUrl}}{{answer}}{{id}}
+PUT {{baseUrl}}{{answer}}/{{id}}
 Content-Type: {{contentType}}
 
 {
@@ -420,7 +420,7 @@ Content-Type: {{contentType}}
 ###
 
 ### Delete Answer
-DELETE {{baseUrl}}{{answer}}{{id}}
+DELETE {{baseUrl}}{{answer}}/{{id}}
 
 ############################################################
 # ENROLLMENTS
@@ -431,7 +431,6 @@ POST {{baseUrl}}{{enrollment}}
 Content-Type: {{contentType}}
 
 {
-  "nome": "Inscrição TypeScript",
   "user": {
     "id": 1
   },
@@ -448,16 +447,15 @@ GET {{baseUrl}}{{enrollment}}
 ###
 
 ### Find Enrollment By Id
-GET {{baseUrl}}{{enrollment}}{{id}}
+GET {{baseUrl}}{{enrollment}}/{{id}}
 
 ###
 
 ### Update Enrollment
-PUT {{baseUrl}}{{enrollment}}{{id}}
+PUT {{baseUrl}}{{enrollment}}/{{id}}
 Content-Type: {{contentType}}
 
 {
-  "nome": "Inscrição Atualizada",
   "user": {
     "id": 1
   },
@@ -469,7 +467,7 @@ Content-Type: {{contentType}}
 ###
 
 ### Delete Enrollment
-DELETE {{baseUrl}}{{enrollment}}{{id}}
+DELETE {{baseUrl}}{{enrollment}}/{{id}}
 
 ############################################################
 # LESSON PROGRESS
@@ -498,12 +496,12 @@ GET {{baseUrl}}{{lessonProgress}}
 ###
 
 ### Find Lesson Progress By Id
-GET {{baseUrl}}{{lessonProgress}}{{id}}
+GET {{baseUrl}}{{lessonProgress}}/{{id}}
 
 ###
 
 ### Update Lesson Progress
-PUT {{baseUrl}}{{lessonProgress}}{{id}}
+PUT {{baseUrl}}{{lessonProgress}}/{{id}}
 Content-Type: {{contentType}}
 
 {
@@ -520,7 +518,7 @@ Content-Type: {{contentType}}
 ###
 
 ### Delete Lesson Progress
-DELETE {{baseUrl}}{{lessonProgress}}{{id}}
+DELETE {{baseUrl}}{{lessonProgress}}/{{id}}
 
 ############################################################
 # SESSIONS
@@ -532,22 +530,22 @@ GET {{baseUrl}}{{session}}
 ###
 
 ### Find Session By Id
-GET {{baseUrl}}{{session}}{{id}}
+GET {{baseUrl}}{{session}}/{{id}}
 
 ###
 
 ### Refresh Session
-PATCH {{baseUrl}}{{session}}{{id}}/refresh
+PATCH {{baseUrl}}{{session}}/{{id}}/refresh
 
 ###
 
 ### Revoke Session
-PATCH {{baseUrl}}{{session}}{{id}}/revoke
+PATCH {{baseUrl}}{{session}}/{{id}}/revoke
 
 ###
 
 ### Delete Session
-DELETE {{baseUrl}}{{session}}{{id}}
+DELETE {{baseUrl}}{{session}}/{{id}}
 
 ############################################################
 # STREAKS
@@ -559,7 +557,7 @@ GET {{baseUrl}}{{streak}}
 ###
 
 ### Find Streak By Id
-GET {{baseUrl}}{{streak}}{{id}}
+GET {{baseUrl}}{{streak}}/{{id}}
 
 ###
 
@@ -614,12 +612,12 @@ GET {{baseUrl}}{{suggestion}}
 ###
 
 ### Find Suggestion By Id
-GET {{baseUrl}}{{suggestion}}{{id}}
+GET {{baseUrl}}{{suggestion}}/{{id}}
 
 ###
 
 ### Update Suggestion
-PUT {{baseUrl}}{{suggestion}}{{id}}
+PUT {{baseUrl}}{{suggestion}}/{{id}}
 Content-Type: {{contentType}}
 
 {
@@ -636,4 +634,4 @@ Content-Type: {{contentType}}
 ###
 
 ### Delete Suggestion
-DELETE {{baseUrl}}{{suggestion}}{{id}}
+DELETE {{baseUrl}}{{suggestion}}/{{id}}

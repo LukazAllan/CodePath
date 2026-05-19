@@ -33,8 +33,8 @@ public class EnrollmentController {
         return enrollmentService.listById(id);
     }
 
-    @PostMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateById(@PathVariable Long id, @RequestBody Enrollment enrollment){
         enrollmentService.updateById(id, enrollment);
     }

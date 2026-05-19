@@ -1,6 +1,7 @@
 package br.com.codepath.api.model;
 
 import br.com.codepath.api.model.enums.LessonProgressStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class LessonProgress {
 
     @OneToOne
     @JoinColumn(name = "lesson_id")
+    @JsonIgnore
     private Lesson lesson;
 
     @Enumerated(EnumType.STRING)

@@ -22,6 +22,6 @@ public class Lesson {
     @JoinColumn(name = "section_id")
     private Section section;
 
-    private int ordem;
+    private Integer ordem;
     private Boolean active;
 }

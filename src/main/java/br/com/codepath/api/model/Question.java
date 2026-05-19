@@ -21,7 +21,7 @@ public class Question {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private QuestionType Type;
+    private QuestionType type;
 
     @ManyToOne
     @JoinColumn(name = "lessonId")

@@ -1,5 +1,6 @@
 package br.com.codepath.api.controller;
 
+import br.com.codepath.api.dto.request.SectionRequestDTO;
 import br.com.codepath.api.model.Section;
 import br.com.codepath.api.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class SectionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(Section section) {
+    public void create(@RequestBody Section section) {
         sectionService.create(section);
     }
     
@@ -35,13 +36,13 @@ public class SectionController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(Long id){
+    public void delete(@PathVariable Long id){
         sectionService.deleteById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void update(Long id, Section sectionEdit){
-        sectionService.updateById(id, sectionEdit);
+    public void update(@PathVariable Long id, @RequestBody Section section){
+        sectionService.updateById(id, section);
     }
 }

@@ -1,5 +1,6 @@
 package br.com.codepath.api.controller;
 
+import br.com.codepath.api.dto.request.CreateLessonRequestDTO;
 import br.com.codepath.api.model.Lesson;
 import br.com.codepath.api.service.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ public class LessonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Lesson lesson){lessonService.create(lesson);}
+    public void create(@RequestBody Lesson lesson) {
+        lessonService.create(lesson);
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
