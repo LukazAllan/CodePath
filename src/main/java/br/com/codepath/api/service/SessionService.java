@@ -40,6 +40,22 @@ public class SessionService {
         sessionRepository.save(thisSession);
     }
 
+    public void revokeByUserId(Long id){
+        Session thisSession = sessionRepository.findByUserId(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        thisSession.setLastActivity(
+                thisSession.getLastActivity().minusDays(1)
+        );
+        sessionRepository.save(thisSession);
+    }
+
+    public void refreshByUserId(Long id){
+        Session thisSession = sessionRepository.findByUserId(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        thisSession.setLastActivity(LocalDateTime.now());
+        sessionRepository.save(thisSession);
+    }
+
     public void deleteById(Long id){
         sessionRepository.deleteById(id);
     }
