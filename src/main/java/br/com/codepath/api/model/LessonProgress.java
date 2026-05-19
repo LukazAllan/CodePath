@@ -21,6 +21,7 @@ public class LessonProgress {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @OneToOne

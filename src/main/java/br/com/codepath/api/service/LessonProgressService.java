@@ -19,11 +19,8 @@ public class LessonProgressService {
         lessonProgressRepository.save(lessonProgress);
     }
 
-    public List<LessonProgressResponseDTO> listAll() {
-        return lessonProgressRepository.findAll()
-                .stream()
-                .map(this::toDTO)
-                .toList();
+    public List<LessonProgress> listAll() {
+        return lessonProgressRepository.findAll();
     }
 
     public LessonProgressResponseDTO toDTO(LessonProgress progress) {
