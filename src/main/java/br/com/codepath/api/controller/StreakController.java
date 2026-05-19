@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/streak")
+@RequestMapping("/streaks")
 public class StreakController {
 
     @Autowired
