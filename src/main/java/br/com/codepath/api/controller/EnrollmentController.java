@@ -16,8 +16,8 @@ public class EnrollmentController {
     EnrollmentService enrollmentService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
-    public void create(Enrollment enrollment){
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody Enrollment enrollment){
         enrollmentService.create(enrollment);
     }
 
