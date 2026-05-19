@@ -1,5 +1,6 @@
 package br.com.codepath.api.controller;
 
+import br.com.codepath.api.dto.response.LessonProgressResponseDTO;
 import br.com.codepath.api.model.LessonProgress;
 import br.com.codepath.api.service.LessonProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class LessonProgressController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<LessonProgress> listAll() {
+    public List<LessonProgressResponseDTO> listAll() {
         return lessonProgressService.listAll();
     }
 

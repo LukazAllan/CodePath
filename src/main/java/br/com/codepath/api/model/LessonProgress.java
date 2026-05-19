@@ -25,7 +25,6 @@ public class LessonProgress {
 
     @OneToOne
     @JoinColumn(name = "lesson_id")
-    @JsonIgnore
     private Lesson lesson;
 
     @Enumerated(EnumType.STRING)
