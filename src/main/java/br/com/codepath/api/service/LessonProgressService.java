@@ -1,5 +1,6 @@
 package br.com.codepath.api.service;
 
+import br.com.codepath.api.dto.response.LessonProgressResponseDTO;
 import br.com.codepath.api.model.LessonProgress;
 import br.com.codepath.api.repository.LessonProgressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,22 @@ public class LessonProgressService {
         lessonProgressRepository.save(lessonProgress);
     }
 
-    public List<LessonProgress> listAll() {
-        return lessonProgressRepository.findAll();
+    public List<LessonProgressResponseDTO> listAll() {
+        return lessonProgressRepository.findAll()
+                .stream()
+                .map(this::toDTO)
+                .toList();
+    }
+
+    public LessonProgressResponseDTO toDTO(LessonProgress progress) {
+        return new LessonProgressResponseDTO(
+                progress.getId(),
+                progress.getUser().getId(),
+                progress.getLesson().getId(),
+                progress.getStatus(),
+                progress.getCompleted(),
+                progress.getCompletedAt()
+        );
     }
 
     public Optional<LessonProgress> listById(Long id) {
