@@ -26,8 +26,8 @@ public class AuthController {
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
-    public void signUp(@RequestBody NewUserRequestDTO user) {
-        authService.signUp(user);
+    public TokenResponseDTO signUp(@RequestBody NewUserRequestDTO user) {
+        return authService.signUp(user);
     }
 
 

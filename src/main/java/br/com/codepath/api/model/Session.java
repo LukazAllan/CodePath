@@ -25,6 +25,9 @@ public class Session {
     @Column(nullable = false, unique = true)
     private String token;
 
+    @Column(nullable = false)
+    private LocalDateTime createdAt =  LocalDateTime.now();
+
     @Column(name = "last_activity", nullable = false)
     private LocalDateTime lastActivity;
 
