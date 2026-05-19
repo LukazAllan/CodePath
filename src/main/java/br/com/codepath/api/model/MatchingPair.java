@@ -4,7 +4,7 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class MatchingPair {
-    private String left;
-    private String right;
+    private String esq;
+    private String dir;
 }
 
