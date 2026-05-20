@@ -18,12 +18,13 @@ public class Streak {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
     @ColumnDefault("0")
     private Integer days;
 
+    @Column(columnDefinition = "TEXT")
     private LocalDate lastDay = LocalDate.now();
 }
