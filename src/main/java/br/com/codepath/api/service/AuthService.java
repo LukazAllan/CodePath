@@ -9,10 +9,8 @@ import br.com.codepath.api.repository.SessionRepository;
 import br.com.codepath.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.sqlite.SQLiteException;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -85,7 +83,7 @@ public class AuthService {
     public MeResponseDTO me(String token){
         Session mySession = sessionRepository
                 .findByToken(token)
-                .orElseThrow(() -> new RuntimeException("Sessão não encontrada"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         mySession.setLastActivity(LocalDateTime.now());
         MeResponseDTO me = new MeResponseDTO(
                 mySession.getUser().getName(),

@@ -1,6 +1,5 @@
 package br.com.codepath.api.controller;
 
-import br.com.codepath.api.dto.request.CreateLessonRequestDTO;
 import br.com.codepath.api.model.Lesson;
 import br.com.codepath.api.service.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
