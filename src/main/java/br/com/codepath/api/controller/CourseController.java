@@ -1,5 +1,6 @@
 package br.com.codepath.api.controller;
 
+import br.com.codepath.api.dto.response.CourseEntiretyResponseDTO;
 import br.com.codepath.api.model.Course;
 import br.com.codepath.api.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class CourseController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Course> listById(@PathVariable Long id){return service.listById(id);}
+    public CourseEntiretyResponseDTO listById(@PathVariable Long id){return service.listById(id);}
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

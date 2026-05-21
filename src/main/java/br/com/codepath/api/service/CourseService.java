@@ -1,14 +1,16 @@
 package br.com.codepath.api.service;
 
-import br.com.codepath.api.model.Course;
-import br.com.codepath.api.repository.CourseRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import br.com.codepath.api.dto.response.CourseEntiretyResponseDTO;
+import br.com.codepath.api.model.Course;
+import br.com.codepath.api.repository.CourseRepository;
+import br.com.codepath.api.strategies.CourseEntiretyStrategy;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
@@ -24,8 +26,8 @@ public class CourseService {
     public List<Course> listAll(){
         return courseRepository.findAll();
     }
-    public Optional<Course> listById(Long id){
-        return courseRepository.findById(id);
+    public CourseEntiretyResponseDTO listById(Long id){
+        return new CourseEntiretyStrategy().create(id);
     }
     public void updateById(Long id, Course courseEdit){
         courseEdit.setId(id);

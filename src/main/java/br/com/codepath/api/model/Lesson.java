@@ -1,5 +1,6 @@
 package br.com.codepath.api.model;
 
+import br.com.codepath.api.dto.LessonDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,4 +28,13 @@ public class Lesson {
 
     private Integer ordem;
     private Boolean active;
+
+    public LessonDTO toDTO() {
+        return new LessonDTO(
+                this.name,
+                this.content,
+                this.ordem,
+                this.active
+        );
+    }
 }
