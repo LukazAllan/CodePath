@@ -28,7 +28,7 @@ public class CourseEntiretyStrategy implements CourseInterface {
     public CourseEntiretyResponseDTO create(Long id){
         CourseEntiretyResponseDTO dto = new CourseEntiretyResponseDTO();
         List<Section> sections = sectionRepository.findAllByCourseId(id);
-        List<Lesson> lessons = lessonRepository.findAllByCourseId(id);
+        List<Lesson> lessons = lessonRepository.findAllBySectionCourseId(id);
 
         dto.setCourse(courseRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
