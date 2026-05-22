@@ -9,5 +9,5 @@ import br.com.codepath.api.model.Section;
 
 @Repository
 public interface SectionRepository extends JpaRepository<Section, Long> {
-    public List<Section> findAllByCourseId(Long id);
+    List<Section> findAllByCourseId(Long courseId);
 }
