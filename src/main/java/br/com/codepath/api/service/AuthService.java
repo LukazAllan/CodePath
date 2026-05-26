@@ -1,5 +1,13 @@
 package br.com.codepath.api.service;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import br.com.codepath.api.dto.request.NewUserRequestDTO;
 import br.com.codepath.api.dto.response.MeResponseDTO;
 import br.com.codepath.api.dto.response.TokenResponseDTO;
@@ -7,13 +15,6 @@ import br.com.codepath.api.model.Session;
 import br.com.codepath.api.model.User;
 import br.com.codepath.api.repository.SessionRepository;
 import br.com.codepath.api.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -86,6 +87,7 @@ public class AuthService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         mySession.setLastActivity(LocalDateTime.now());
         MeResponseDTO me = new MeResponseDTO(
+                mySession.getUser().getId(),
                 mySession.getUser().getName(),
                 mySession.getUser().getEmail(),
                 mySession.getToken(),
