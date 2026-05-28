@@ -1,0 +1,456 @@
+/* Arquivo de estilos globais da aplicação CodePath */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+}
+
+#app-root {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* css/style.css */
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.login-container h2 {
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que padding não afete a largura total */
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.login-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-links a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+/* Layout Geral */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    border-right: 2px solid #e5e5e5;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1cb0f6; /* Azul CodePath */
+    margin-bottom: 30px;
+}
+
+.logo-section img {
+    width: 32px;
+    height: 32px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #777;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: background 0.2s;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.nav-item:hover {
+    background-color: #f7f7f7;
+}
+
+.nav-item.active {
+    background-color: #ddf4ff;
+    color: #1cb0f6;
+    border: 2px solid #84d8ff;
+}
+
+/* Footer Sidebar */
+.sidebar-footer {
+    border-top: 2px solid #e5e5e5;
+    padding-top: 20px;
+}
+
+.user-info-small {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.user-avatar-small {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+
+.btn-logout {
+    color: #ff4b4b;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 240px;
+    flex-grow: 1;
+    padding: 24px 48px;
+    max-width: 1000px;
+}
+
+/* Header Dashboard */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.course-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #4b4b4b;
+    text-transform: uppercase;
+}
+
+.stats-container {
+    display: flex;
+    gap: 24px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.stat-item.streak { color: #ff9600; }
+.stat-item.hearts { color: #ff4b4b; }
+.stat-item.xp { color: #1cb0f6; }
+
+/* Welcome Banner */
+.welcome-banner {
+    background: linear-gradient(135deg, #00cd9c 0%, #00ab82 100%);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.welcome-banner h1 {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.btn-start-lesson {
+    background-color: white;
+    color: #00ab82;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #e5e5e5;
+    transition: transform 0.1s;
+}
+
+.btn-start-lesson:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+/* Cards Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.dashboard-card {
+    border: 2px solid #e5e5e5;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.dashboard-card h3 {
+    color: #4b4b4b;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background-color: #e5e5e5;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #00cd9c;
+    border-radius: 10px;
+}
+
+.progress-text {
+    color: #afafaf;
+    font-size: 14px;
+}
+
+/* Profile Page Specific Styles */
+.profile-card-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    border: 2px solid #e5e5e5;
+    border-radius: 24px;
+    margin-bottom: 32px;
+}
+
+.profile-avatar-container {
+    position: relative;
+}
+
+.profile-avatar-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #00cd9c;
+    object-fit: cover;
+}
+
+.profile-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #ffc800;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 0 #e5a000;
+}
+
+.profile-details h1 {
+    font-size: 28px;
+    color: #4b4b4b;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.profile-email {
+    color: #afafaf;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-secondary-outline {
+    background-color: #f7f7f7;
+    color: #4b4b4b;
+    border: 2px solid #e5e5e5;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-blue-outline {
+    background-color: #ddf4ff;
+    color: #1cb0f6;
+    border: 2px solid #84d8ff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-purple {
+    background-color: #58cc02; /* Temporário, vou ajustar para o roxo da imagem */
+    background: linear-gradient(135deg, #8432ff 0%, #611cfb 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 16px;
+    width: 100%;
+}
+
+/* Stats Mini Grid */
+.stats-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.mini-stat-card {
+    border: 2px solid #e5e5e5;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.mini-stat-card span {
+    font-size: 24px;
+}
+
+.mini-stat-card .label {
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #afafaf;
+}
+
+.mini-stat-card .value {
+    font-size: 24px;
+    font-weight: 800;
+    color: #4b4b4b;
+}
+
+/* Colors for stats cards */
+.stat-ofensiva { background-color: #fff4e5; border-color: #ffebcc; }
+.stat-ofensiva .label { color: #ff9600; }
+.stat-xp { background-color: #e5f5ff; border-color: #ccebff; }
+.stat-xp .label { color: #1cb0f6; }
+.stat-nivel { background-color: #e5fffa; border-color: #ccfff5; }
+.stat-nivel .label { color: #00cd9c; }
+.stat-vidas { background-color: #fff0f0; border-color: #ffcccc; }
+.stat-vidas .label { color: #ff4b4b; }
+
+/* Utilitários */
+.error {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: none;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    width: 100%;
+}

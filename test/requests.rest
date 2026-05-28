@@ -1,0 +1,637 @@
+### =========================================================
+### CodePath API Tests
+### Arquivo: requests.rest
+### =========================================================
+@baseUrl = http://localhost:8080
+@contentType = application/json
+@token = 6e46cc2c-0e38-4cd4-a1eb-94fad9363301
+@id = 1
+### =========================================================
+### ENDPOINTS
+@course = /courses
+@auth = /auth
+@user = /users
+@section = /sections
+@lesson = /lessons
+@question = /questions
+@answer = /answers
+@enrollment = /enrollments
+@lessonProgress = /lesson-progress
+@session = /sessions
+@streak = /streaks
+@suggestion = /suggestions
+
+############################################################
+# AUTH
+############################################################
+
+### Signup
+POST {{baseUrl}}{{auth}}/signup
+Content-Type: {{contentType}}
+
+{
+  "name": "Allan Lucas",
+  "email": "allan@codepath.com",
+  "password": "123456"
+}
+
+###
+
+### Login
+POST {{baseUrl}}{{auth}}/login
+Content-Type: {{contentType}}
+
+{
+  "email": "allan@codepath.com",
+  "password": "123456"
+}
+
+###
+
+### Me
+POST {{baseUrl}}{{auth}}/me
+Content-Type: {{contentType}}
+
+{
+  "token": "{{token}}"
+}
+
+############################################################
+# USERS
+############################################################
+
+### Create User
+POST {{baseUrl}}{{user}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Felipe",
+  "email": "felipe@codepath.com",
+  "password": "123456",
+  "xp": 0,
+  "hearts": 5,
+  "role": "ADMIN"
+}
+
+###
+
+### List Users
+GET {{baseUrl}}{{user}}
+
+###
+
+### Find User By Id
+GET {{baseUrl}}{{user}}/{{id}}
+
+###
+
+### Update User
+PUT {{baseUrl}}{{user}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Maria Silva",
+  "email": "maria@codepath.com",
+  "password": "123456",
+  "xp": 100,
+  "hearts": 4,
+  "role": "ADMIN"
+}
+
+###
+
+### Delete User
+DELETE {{baseUrl}}{{user}}/{{id}}
+
+############################################################
+# COURSES
+############################################################
+
+### Create Course
+POST {{baseUrl}}{{course}}
+Content-Type: {{contentType}}
+
+{
+  "nome": "TypeScript do Zero"
+}
+
+###
+
+### List Courses
+GET {{baseUrl}}{{course}}
+
+###
+{{lesson}}
+### Find Course By Id
+GET {{baseUrl}}{{course}}/{{id}}
+
+###
+
+### Update Course
+PUT {{baseUrl}}{{course}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "nome": "Java Completo"
+}
+
+###
+
+### Delete Course
+DELETE {{baseUrl}}{{course}}/{{id}}
+
+############################################################
+# SECTIONS
+############################################################
+
+### Create Section
+POST {{baseUrl}}{{section}}
+Content-Type: {{contentType}}
+
+{
+  "course": {
+    "id": 1
+  },
+  "title": "Fundamentos",
+  "subtitle": "Introdução ao TypeScript",
+  "color": "#009966",
+  "icon": "🟢",
+  "ordem": 1
+}
+
+###
+
+### List Sections
+GET {{baseUrl}}{{section}}
+
+###
+
+### Find Section By Id
+GET {{baseUrl}}{{section}}/{{id}}
+
+###
+
+### Update Section
+PUT {{baseUrl}}{{section}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "course": {
+    "id": 1
+  },
+  "title": "Fundamentos",
+  "subtitle": "Introdução ao TypeScript",
+  "color": "#00AA88",
+  "icon": "I",
+  "ordem": 1
+}
+
+###
+
+### Delete Section
+DELETE {{baseUrl}}{{section}}/{{id}}
+
+############################################################
+# LESSONS
+############################################################
+
+### Create Lesson
+POST {{baseUrl}}{{lesson}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Variáveis",
+  "content": "Conteúdo da aula",
+  "section": {
+    "id": 1
+  },
+  "ordem": 1,
+  "active": true
+}
+
+###
+
+### List Lessons
+GET {{baseUrl}}{{lesson}}
+
+###
+
+### Find Lesson By Id
+GET {{baseUrl}}{{lesson}}/{{id}}
+
+###
+
+### Update Lesson
+PUT {{baseUrl}}{{lesson}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Variáveis Atualizado",
+  "content": "Novo conteúdo",
+  "section": {
+    "id": 1
+  },
+  "ordem": 1,
+  "active": true
+}
+
+###
+
+### Delete Lesson
+DELETE {{baseUrl}}{{lesson}}/{{id}}
+
+############################################################
+# QUESTIONS
+############################################################
+
+### Create Multiple Choice Question
+POST {{baseUrl}}{{question}}
+Content-Type: {{contentType}}
+
+{
+  "type": "MULTIPLE_CHOICE",
+  "lesson": {
+    "id": 1
+  },
+  "label": "Escolha a correta",
+  "prompt": "O que é TypeScript?",
+  "code": null,
+  "options": [
+    "Linguagem de banco de dados",
+    "Superset do JavaScript",
+    "Framework CSS",
+    "Sistema operacional"
+  ],
+  "correct": 1,
+  "hint": "Ele adiciona tipagem ao JS"
+}
+
+###
+
+### Create True False Question
+POST {{baseUrl}}{{question}}
+Content-Type: {{contentType}}
+
+{
+  "type": "TRUE_FALSE",
+  "lesson": {
+    "id": 1
+  },
+  "label": "Verdadeiro ou falso",
+  "prompt": "TypeScript compila para JavaScript",
+  "correct": 0,
+  "options": [
+    "Verdadeiro",
+    "Falso"
+  ],
+  "hint": "Ele vira JS no final"
+}
+
+###
+
+### Create Matching Question
+POST {{baseUrl}}{{question}}
+Content-Type: {{contentType}}
+
+{
+  "type": "MATCHING",
+  "lesson": {
+    "id": 1
+  },
+  "label": "Associe",
+  "prompt": "Associe os conceitos",
+  "pairs": [
+    {
+      "left": "string",
+      "right": "texto"
+    },
+    {
+      "left": "number",
+      "right": "número"
+    }
+  ],
+  "hint": "Associe corretamente"
+}
+
+###
+
+### Create Short Text Question
+POST {{baseUrl}}{{question}}
+Content-Type: {{contentType}}
+
+{
+  "type": "SHORT_TEXT",
+  "lesson": {
+    "id": 1
+  },
+  "label": "Resposta curta",
+  "prompt": "Qual comando instala TypeScript globalmente?",
+  "acceptedAnswers": [
+    "npm install -g typescript",
+    "npm i -g typescript"
+  ],
+  "hint": "Use npm"
+}
+
+###
+
+### List Questions
+GET {{baseUrl}}{{question}}
+
+###
+
+### Find Question By Id
+GET {{baseUrl}}{{question}}/{{id}}
+
+###
+
+### Update Question
+PUT {{baseUrl}}{{question}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "type": "MULTIPLE_CHOICE",
+  "lesson": {
+    "id": 1
+  },
+  "label": "Atualizada",
+  "prompt": "Nova pergunta",
+  "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "correct": 2,
+  "hint": "Alternativa C"
+}
+
+###
+
+### Delete Question
+DELETE {{baseUrl}}{{question}}/{{id}}
+
+############################################################
+# ANSWERS
+############################################################
+
+### Create Answer
+POST {{baseUrl}}{{answer}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "id": 1
+  },
+  "question": {
+    "id": 1
+  },
+  "body": "1",
+  "leftValue": null,
+  "rightValue": null
+}
+
+###
+
+### List Answers
+GET {{baseUrl}}{{answer}}
+
+###
+
+### Find Answer By Id
+GET {{baseUrl}}{{answer}}/{{id}}
+
+###
+
+### Update Answer
+PUT {{baseUrl}}{{answer}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "id": 1
+  },
+  "question": {
+    "id": 1
+  },
+  "body": "2"
+}
+
+###
+
+### Delete Answer
+DELETE {{baseUrl}}{{answer}}/{{id}}
+
+############################################################
+# ENROLLMENTS
+############################################################
+
+### Create Enrollment
+POST {{baseUrl}}{{enrollment}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "id": 1
+  },
+  "course": {
+    "id": 1
+  }
+}
+
+###
+
+### List Enrollments
+GET {{baseUrl}}{{enrollment}}
+
+###
+
+### Find Enrollment By Id
+GET {{baseUrl}}{{enrollment}}/{{id}}
+
+###
+
+### Update Enrollment
+PUT {{baseUrl}}{{enrollment}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "id": 1
+  },
+  "course": {
+    "id": 1
+  }
+}
+
+###
+
+### Delete Enrollment
+DELETE {{baseUrl}}{{enrollment}}/{{id}}
+
+############################################################
+# LESSON PROGRESS
+############################################################
+
+### Create Lesson Progress
+POST {{baseUrl}}{{lessonProgress}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "id": 1
+  },
+  "lesson": {
+    "id": 1
+  },
+  "status": "ACTIVE",
+  "completed": false
+}
+
+###
+
+### List Lesson Progress
+GET {{baseUrl}}{{lessonProgress}}
+
+###
+
+### Find Lesson Progress By Id
+GET {{baseUrl}}{{lessonProgress}}/{{id}}
+
+###
+
+### Update Lesson Progress
+PUT {{baseUrl}}{{lessonProgress}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "id": 1
+  },
+  "lesson": {
+    "id": 1
+  },
+  "status": "DONE",
+  "completed": true
+}
+
+###
+
+### Delete Lesson Progress
+DELETE {{baseUrl}}{{lessonProgress}}/{{id}}
+
+############################################################
+# SESSIONS
+############################################################
+
+### List Sessions
+GET {{baseUrl}}{{session}}
+
+###
+
+### Find Session By Id
+GET {{baseUrl}}{{session}}/{{id}}
+
+###
+
+### Refresh Session
+PATCH {{baseUrl}}{{session}}/{{id}}/refresh
+
+###
+
+### Revoke Session
+PATCH {{baseUrl}}{{session}}/{{id}}/revoke
+
+###
+
+### Delete Session
+DELETE {{baseUrl}}{{session}}/{{id}}
+
+############################################################
+# STREAKS
+############################################################
+
+### List Streaks
+GET {{baseUrl}}{{streak}}
+
+###
+
+### Find Streak By Id
+GET {{baseUrl}}{{streak}}/{{id}}
+
+###
+
+### Find By Days
+GET {{baseUrl}}{{streak}}/days/7
+
+###
+
+### Set Days By User Id
+PATCH {{baseUrl}}{{streak}}/set-days
+Content-Type: {{contentType}}
+
+{
+  "userId": 1,
+  "days": 15
+}
+
+###
+
+### Revoke Days By Id
+PATCH {{baseUrl}}{{streak}}/revoke
+Content-Type: {{contentType}}
+
+{
+  "id": 1
+}
+
+############################################################
+# SUGGESTIONS
+############################################################
+
+### Create Suggestion
+POST {{baseUrl}}{{suggestion}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "id": 1
+  },
+  "question": {
+    "id": 1
+  },
+  "comment": "Adicionar mais exemplos",
+  "status": "PENDING"
+}
+
+###
+
+### List Suggestions
+GET {{baseUrl}}{{suggestion}}
+
+###
+
+### Find Suggestion By Id
+GET {{baseUrl}}{{suggestion}}/{{id}}
+
+###
+
+### Update Suggestion
+PUT {{baseUrl}}{{suggestion}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "user": {
+    "id": 1
+  },
+  "question": {
+    "id": 1
+  },
+  "comment": "Comentário atualizado",
+  "status": "APROVED"
+}
+
+###
+
+### Delete Suggestion
+DELETE {{baseUrl}}{{suggestion}}/{{id}}
