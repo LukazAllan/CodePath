@@ -1,0 +1,9 @@
+/target/
+/database.db
+/mvnw
+/mvnw.cmd
+/.mvn/
+/.idea/
+/.vscode/
+*.class
+*.log
