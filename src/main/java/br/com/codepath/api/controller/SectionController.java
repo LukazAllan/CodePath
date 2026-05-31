@@ -1,6 +1,6 @@
 package br.com.codepath.api.controller;
 
-import br.com.codepath.api.dto.request.SectionRequestDTO;
+import br.com.codepath.api.dto.SectionDTO;
 import br.com.codepath.api.model.Section;
 import br.com.codepath.api.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class SectionController {
     
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Section> listById(@PathVariable Long id){
+    public SectionDTO listById(@PathVariable Long id){
         return sectionService.listById(id);
     }
 

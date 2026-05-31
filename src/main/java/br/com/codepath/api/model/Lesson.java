@@ -1,12 +1,16 @@
 package br.com.codepath.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import br.com.codepath.api.dto.LessonDTO;
+import jakarta.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,4 +31,14 @@ public class Lesson {
 
     private Integer ordem;
     private Boolean active;
+
+    public LessonDTO toDTO() {
+        return new LessonDTO(
+                this.getSection().getId(),
+                this.name,
+                this.content,
+                this.ordem,
+                this.active
+        );
+    }
 }

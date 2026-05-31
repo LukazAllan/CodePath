@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @AllArgsConstructor
@@ -37,6 +38,8 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private RoleEnum role = RoleEnum.USER;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore

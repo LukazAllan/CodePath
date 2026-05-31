@@ -49,6 +49,7 @@ Content-Type: {{contentType}}
 ###
 
 ### Me
+### Devolve State
 POST {{baseUrl}}{{auth}}/me
 Content-Type: {{contentType}}
 
@@ -112,7 +113,7 @@ POST {{baseUrl}}{{course}}
 Content-Type: {{contentType}}
 
 {
-  "nome": "TypeScript do Zero"
+  "nome": "Python do Zero"
 }
 
 ###
@@ -121,7 +122,6 @@ Content-Type: {{contentType}}
 GET {{baseUrl}}{{course}}
 
 ###
-{{lesson}}
 ### Find Course By Id
 GET {{baseUrl}}{{course}}/{{id}}
 
@@ -155,7 +155,7 @@ Content-Type: {{contentType}}
   "title": "Fundamentos",
   "subtitle": "Introdução ao TypeScript",
   "color": "#009966",
-  "icon": "🟢",
+  "icon": "I",
   "ordem": 1
 }
 
@@ -435,7 +435,7 @@ Content-Type: {{contentType}}
     "id": 1
   },
   "course": {
-    "id": 1
+    "id": 2
   }
 }
 
@@ -448,6 +448,11 @@ GET {{baseUrl}}{{enrollment}}
 
 ### Find Enrollment By Id
 GET {{baseUrl}}{{enrollment}}/{{id}}
+
+###
+
+### Find Courses By userId
+GET {{baseUrl}}{{enrollment}}/user/{{id}}
 
 ###
 

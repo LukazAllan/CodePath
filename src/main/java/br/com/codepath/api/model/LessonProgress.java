@@ -1,13 +1,23 @@
 package br.com.codepath.api.model;
 
-import br.com.codepath.api.model.enums.LessonProgressStatus;
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+
+import br.com.codepath.api.model.enums.LessonProgressStatus;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -30,6 +40,8 @@ public class LessonProgress {
 
     @Enumerated(EnumType.STRING)
     private LessonProgressStatus status;
+
+    private Short stars;
 
     private Boolean completed;
     private LocalDateTime completedAt;

@@ -1,7 +1,6 @@
 package br.com.codepath.api.model;
 
 import br.com.codepath.api.model.enums.QuestionType;
-import br.com.codepath.api.model.Lesson;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table (name= "question")
+@Table(name= "question")
 @Entity
 @Data
 public class Question {

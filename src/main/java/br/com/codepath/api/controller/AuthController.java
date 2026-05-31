@@ -3,7 +3,7 @@ package br.com.codepath.api.controller;
 import br.com.codepath.api.dto.request.LoginRequestDTO;
 import br.com.codepath.api.dto.request.NewUserRequestDTO;
 import br.com.codepath.api.dto.request.TokenRequestDTO;
-import br.com.codepath.api.dto.response.MeResponseDTO;
+import br.com.codepath.api.dto.response.UserResponseDTO;
 import br.com.codepath.api.dto.response.TokenResponseDTO;
 import br.com.codepath.api.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +42,7 @@ public class AuthController {
 
     @PostMapping("/me")
     @ResponseStatus(HttpStatus.OK)
-    public MeResponseDTO me(@RequestBody TokenRequestDTO request) {
+    public UserResponseDTO me(@RequestBody TokenRequestDTO request) {
         return authService.me(
                 request.getToken()
         );

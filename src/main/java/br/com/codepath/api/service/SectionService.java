@@ -1,17 +1,16 @@
 package br.com.codepath.api.service;
 
+import br.com.codepath.api.dto.SectionDTO;
 import br.com.codepath.api.dto.request.SectionRequestDTO;
 import br.com.codepath.api.model.Section;
 import br.com.codepath.api.repository.CourseRepository;
 import br.com.codepath.api.repository.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SectionService {
@@ -37,8 +36,10 @@ public class SectionService {
     public List<Section> listAll(){
         return sectionRepository.findAll();
     }
-    public Optional<Section> listById(Long id){
-        return sectionRepository.findById(id);
+    public SectionDTO listById(Long id){
+        return sectionRepository.findById(id)
+        .map(Section::toDTO)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
     public void deleteById(Long id){
         sectionRepository.deleteById(id);
