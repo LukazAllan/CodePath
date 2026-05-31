@@ -9,6 +9,6 @@ public class SectionDTO{
     private String title;
     private String subtitle;
     private String color;
-    private Character icon;
+    private String icon;
     private Integer ordem;
 }
