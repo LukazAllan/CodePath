@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface LessonProgressRepository extends JpaRepository<LessonProgress, Long> {
     List<LessonProgress> findAllByUserId(Long userId);
+    LessonProgress findByUserIdAndLessonId(
+            Long userId,
+            Long lessonId
+    );
 }

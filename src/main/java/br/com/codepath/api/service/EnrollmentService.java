@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.codepath.api.dto.response.AprenderResponseDTO;
+import br.com.codepath.api.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -46,7 +48,7 @@ public class EnrollmentService {
     }
 
     public CoursesByUserIdResponseDTO listCourseByUserId(Long id){
-        List<Enrollment> enrollments = enrollmentRepository.findByUserId(id);
+        List<Enrollment> enrollments = enrollmentRepository.findAllByUserId(id);
         CoursesByUserIdResponseDTO response = new CoursesByUserIdResponseDTO();
         for (Enrollment enrollment : enrollments) {
             response.add(enrollment.getCourse());
