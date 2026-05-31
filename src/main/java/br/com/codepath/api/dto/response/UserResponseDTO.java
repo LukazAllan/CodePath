@@ -15,4 +15,6 @@ public class MeResponseDTO {
     private String email;
     private String token;
     private LocalDateTime lastActivity;
+    private Integer xp;
+    private Integer hearts;
 }

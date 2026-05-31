@@ -1,13 +1,23 @@
 package br.com.codepath.api.controller;
 
-import br.com.codepath.api.model.Enrollment;
-import br.com.codepath.api.service.EnrollmentService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Optional;
+import br.com.codepath.api.dto.response.EnrollmentResponseDTO;
+import br.com.codepath.api.dto.response.CoursesByUserIdResponseDTO;
+import br.com.codepath.api.model.Enrollment;
+import br.com.codepath.api.service.EnrollmentService;
 
 @RestController
 @RequestMapping("/enrollments")
@@ -23,14 +33,20 @@ public class EnrollmentController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Enrollment> listAll(){
+    public List<EnrollmentResponseDTO> listAll(){
         return enrollmentService.listAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Enrollment> listById(@PathVariable Long id){
+    public EnrollmentResponseDTO listById(@PathVariable Long id){
         return enrollmentService.listById(id);
+    }
+    
+    @GetMapping("/user/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CoursesByUserIdResponseDTO listCourseByUserId(@PathVariable Long id){
+        return enrollmentService.listCourseByUserId(id);
     }
 
     @PutMapping("/{id}")
