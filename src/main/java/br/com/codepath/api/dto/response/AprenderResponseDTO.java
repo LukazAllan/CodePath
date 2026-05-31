@@ -3,6 +3,7 @@ package br.com.codepath.api.dto.response;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import br.com.codepath.api.model.enums.LessonProgressStatus;
 import br.com.codepath.api.model.enums.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,9 +31,19 @@ class MockUser{
 
 @AllArgsConstructor
 @Data
+class MockProgress{
+    private LessonProgressStatus status;
+    private Short stars;
+    private Boolean completed;
+    private LocalDateTime completedAt;
+}
+
+@AllArgsConstructor
+@Data
 class MockLesson{
     private String name;
     private String content;
+    private MockProgress progress;
 }
 
 @AllArgsConstructor
