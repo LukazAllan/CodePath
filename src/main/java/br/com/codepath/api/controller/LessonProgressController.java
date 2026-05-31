@@ -27,6 +27,10 @@ public class LessonProgressController {
         return lessonProgressService.listAll();
     }
 
+    @GetMapping("/users/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LessonProgress> listAllByUserId(@PathVariable Long userId){return lessonProgressService.listAllByUserId(userId);}
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<LessonProgress> listById(@PathVariable Long id) {

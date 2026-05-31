@@ -23,6 +23,8 @@ public class LessonProgressService {
         return lessonProgressRepository.findAll();
     }
 
+    public List<LessonProgress> listAllByUserId(Long userId){return lessonProgressRepository.findAllByUserId(userId);}
+
     public LessonProgressResponseDTO toDTO(LessonProgress progress) {
         return new LessonProgressResponseDTO(
                 progress.getId(),
