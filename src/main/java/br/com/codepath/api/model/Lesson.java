@@ -34,7 +34,7 @@ public class Lesson {
 
     public LessonDTO toDTO() {
         return new LessonDTO(
-                this.getSection().getId(),
+                this.getSection().getId()-1,
                 this.name,
                 this.content,
                 this.ordem
