@@ -7,7 +7,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-class MockSection{
+public class MockSection{
     private String title;
     private String subtitle;
     private String color;

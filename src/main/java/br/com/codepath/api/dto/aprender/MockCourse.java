@@ -7,7 +7,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-class MockCourse{
+public class MockCourse{
     private String courseName;
     private List<MockSection> sections;
 }
