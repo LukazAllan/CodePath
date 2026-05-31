@@ -17,9 +17,9 @@ public class AprenderResponseDTO {
     private MockCourse course;
 }
 
+@AllArgsConstructor
 @Data
 class MockUser{
-    private Long id;
     private String name;
     private String email;
     private String password;
