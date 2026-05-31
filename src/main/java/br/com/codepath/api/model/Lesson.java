@@ -37,8 +37,7 @@ public class Lesson {
                 this.getSection().getId(),
                 this.name,
                 this.content,
-                this.ordem,
-                this.active
+                this.ordem
         );
     }
 }
