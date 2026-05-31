@@ -352,5 +352,17 @@
     VALUES
         (1, CURRENT_TIMESTAMP, 'esteuser@codepath.com', 50, 'esteuser', '12345', 'USER', 0),
         (2, CURRENT_TIMESTAMP, 'esteadmin@codepath.com', 50, 'esteadmin', '12345', 'ADMIN', 0);
+    
+    -- ========================================================
+    -- Enrollments
+    -- ========================================================
+
+    insert into enrollment(
+        enrolled_at,
+        course_id,
+        user_id)
+    values
+        (CURRENT_TIMESTAMP, 1, 1);
+
 
     COMMIT;
