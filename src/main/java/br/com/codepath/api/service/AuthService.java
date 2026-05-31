@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.codepath.api.dto.request.NewUserRequestDTO;
-import br.com.codepath.api.dto.response.MeResponseDTO;
+import br.com.codepath.api.dto.response.UserResponseDTO;
 import br.com.codepath.api.dto.response.TokenResponseDTO;
 import br.com.codepath.api.model.Session;
 import br.com.codepath.api.model.User;
@@ -81,17 +81,19 @@ public class AuthService {
         return session.getUser();
     }
 
-    public MeResponseDTO me(String token){
+    public UserResponseDTO me(String token){
         Session mySession = sessionRepository
                 .findByToken(token)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         mySession.setLastActivity(LocalDateTime.now());
-        MeResponseDTO me = new MeResponseDTO(
+        UserResponseDTO me = new UserResponseDTO(
                 mySession.getUser().getId(),
                 mySession.getUser().getName(),
                 mySession.getUser().getEmail(),
                 mySession.getToken(),
-                mySession.getLastActivity()
+                mySession.getLastActivity(),
+                mySession.getUser().getXp(),
+                mySession.getUser().getHearts()
         );
         sessionRepository.save(mySession);
         return me;
