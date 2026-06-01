@@ -34,6 +34,14 @@ public class LessonProgress {
     @JsonIgnore
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    @ManyToOne
+    @JoinColumn(name = "section_id")
+    private Section section;
+
     @OneToOne
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
