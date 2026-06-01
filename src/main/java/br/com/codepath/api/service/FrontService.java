@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,15 +29,11 @@ public class FrontService {
 
     public AprenderResponseDTO printAllUserInfo(Long userId, Integer courseId) {
 
-        List<Enrollment> enrollments = enrollmentRepository.findAllByUserId(userId);
+        Enrollment enrollment = enrollmentRepository.findByUserIdAndCourseId(userId, courseId.longValue())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "Usuário não possui cursos matriculados"));
 
-        if (enrollments.isEmpty()) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND,
-                    "Usuário não possui cursos matriculados");
-        }
-
-        User user = enrollments.get(0).getUser();
+        User user = enrollment.getUser();
 
         MockUser mockUser = new MockUser(
                 user.getName(),
@@ -49,7 +46,7 @@ public class FrontService {
         );
 
         // Exemplo: retorna apenas o primeiro curso matriculado
-        Course course = enrollments.get(courseId).getCourse();
+        Course course = enrollment.getCourse()  ;
 
         List<MockSection> mockSections = new ArrayList<>();
 
