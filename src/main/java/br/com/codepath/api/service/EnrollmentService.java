@@ -4,9 +4,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.codepath.api.model.Lesson;
+import br.com.codepath.api.model.LessonProgress;
+import br.com.codepath.api.model.enums.LessonProgressStatus;
+import br.com.codepath.api.repository.LessonProgressRepository;
+import br.com.codepath.api.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.codepath.api.dto.response.CoursesByUserIdResponseDTO;
