@@ -25,6 +25,9 @@ public class Session {
     @Column(nullable = false, unique = true)
     private String token;
 
+    @Column(name = "ip_addr")
+    private String ipAddress;
+
     @Column(nullable = false)
     private LocalDateTime createdAt =  LocalDateTime.now();
 
