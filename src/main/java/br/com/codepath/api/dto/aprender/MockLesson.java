@@ -6,6 +6,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class MockLesson{
+    private Long id;
     private String name;
     private String content;
     private MockProgress progress;
