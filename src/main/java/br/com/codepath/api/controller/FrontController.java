@@ -15,9 +15,9 @@ public class FrontController {
    @Autowired
    FrontService frontService;
    
-   @GetMapping()
+   @PostMapping()
    @ResponseStatus(HttpStatus.OK)
    public AprenderResponseDTO printAllUserInfo(@RequestBody AprenderRequestDTO request) {
-      return frontService.printAllUserInfo(request.getUserId(), request.getCourseId());
+      return frontService.printAllUserInfo(request.getToken(), request.getCourseId());
    }
 }

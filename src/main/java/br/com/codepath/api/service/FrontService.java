@@ -26,14 +26,18 @@ public class FrontService {
     LessonRepository lessonRepository;
     @Autowired
     LessonProgressRepository lpRepository;
+    @Autowired
+    SessionRepository sessionRepository;
 
-    public AprenderResponseDTO printAllUserInfo(Long userId, Integer courseId) {
+    public AprenderResponseDTO printAllUserInfo(String token, Integer courseId) {
 
-        Enrollment enrollment = enrollmentRepository.findByUserIdAndCourseId(userId, courseId.longValue())
+        User user = sessionRepository.findByToken(token)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
+                .getUser();
+
+        Enrollment enrollment = enrollmentRepository.findByUserIdAndCourseId(user.getId(), courseId.longValue())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                     "Usuário não possui cursos matriculados"));
-
-        User user = enrollment.getUser();
 
         MockUser mockUser = new MockUser(
                 user.getName(),
@@ -57,7 +61,7 @@ public class FrontService {
             List<Lesson> lessons = lessonRepository.findAllBySectionCourseId(section.getId());
 
             for (Lesson lesson : lessons) {
-                LessonProgress lp = lpRepository.findByUserIdAndLessonId(userId, lesson.getId());
+                LessonProgress lp = lpRepository.findByUserIdAndLessonId(user.getId(), lesson.getId());
 
                 MockProgress progress = null;
                 if (lp != null) {
@@ -70,6 +74,7 @@ public class FrontService {
                 }
                 mockLessons.add(
                         new MockLesson(
+                                lesson.getId(),
                                 lesson.getName(),
                                 lesson.getContent(),
                                 progress
@@ -81,7 +86,7 @@ public class FrontService {
                             section.getTitle(),
                             section.getSubtitle(),
                             section.getColor(),
-                            section.getIcon().toString(),
+                            section.getIcon(),
                             section.getOrdem(),
                             mockLessons
                     )
