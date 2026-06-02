@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -30,7 +31,7 @@ public class AuthService {
 
     private static final long TIMEOUT_MINUTES = 5;
 
-    public TokenResponseDTO login(String email, String password) {
+    public TokenResponseDTO login(String email, String password, String ip_address) {
 
         User user = userRepository
                 .findByEmailAndPassword(email, password)
@@ -43,6 +44,7 @@ public class AuthService {
             session.setUser(user);
             session.setToken(token);
             session.setLastActivity(LocalDateTime.now());
+            session.setIpAddress(ip_address);
             sessionRepository.save(session);
         }
 
@@ -50,7 +52,7 @@ public class AuthService {
     }
 
 
-    public TokenResponseDTO signUp(NewUserRequestDTO user) {
+    public TokenResponseDTO signUp(NewUserRequestDTO user, String ip_address) {
         User newUser = new User();
         newUser.setName(user.getName());
         newUser.setEmail(user.getEmail());
@@ -58,7 +60,7 @@ public class AuthService {
         newUser.setXp(0);
         newUser.setHearts(10);
         userService.create(newUser);
-        return this.login(user.getEmail(), user.getPassword());
+        return this.login(user.getEmail(), user.getPassword(),  ip_address);
     }
 
     public User validateSession(String token) {
@@ -72,7 +74,7 @@ public class AuthService {
                 .isBefore(LocalDateTime.now())) {
 
             sessionRepository.delete(session);
-            throw new RuntimeException("Sessão expirada");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
 
         session.setLastActivity(LocalDateTime.now());
